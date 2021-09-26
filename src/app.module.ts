@@ -9,7 +9,6 @@ import { ContentModule } from './content/content.module';
 // todo add to .env
 const MONGO_PASSWORD = 'hTsSEclnuXJeWhkY'
 @Module({
-  // MongooseModule.forRoot(`mongodb+srv://admin:${MONGO_PASSWORD}@cluster0.tspee.mongodb.net/nestjs-demo?retryWrites=true&w=majority`)
   imports: [
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
@@ -18,17 +17,6 @@ const MONGO_PASSWORD = 'hTsSEclnuXJeWhkY'
     MongooseModule.forRoot(`mongodb+srv://admin:${MONGO_PASSWORD}@cluster0.tspee.mongodb.net/nestjs-demo?retryWrites=true&w=majority`),
    // UsersModule,
     ContentModule]
-  /* controllers: [UsersController],
-  providers: [UsersService], */
 })
 export class AppModule { }
 
-  // TypeOrmModule.forRoot({
-    // type: 'mongodb',
-    // url:
-      // `mongodb+srv://admin:${MONGO_PASSWORD}@cluster0.tspee.mongodb.net/nestjs-demo?retryWrites=true&w=majority`,
-    // entities: [join(__dirname, '**/**.entity{.ts,.js}')],
-    // synchronize: true,
-    // useNewUrlParser: true,
-  //   logging: true,
-  // })

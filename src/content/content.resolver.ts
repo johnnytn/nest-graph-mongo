@@ -3,6 +3,7 @@ import { ContentService } from './content.service'
 import { Content } from './entities/content.entity'
 import { CreateContentInput } from './dto/create-content.input'
 import { UpdateContentInput } from './dto/update-content.input'
+import { FindContentInput } from './dto/find-content.input'
 
 @Resolver(() => Content)
 export class ContentResolver {
@@ -20,28 +21,23 @@ export class ContentResolver {
   async contentsMany() {
     return this.contentService.findMany()
   }
+  @Query(() => Content)
+  findContent(@Args('input') content: FindContentInput) {
+    return this.contentService.findById(content._id)
+  }
 
   @Mutation(() => Content)
   createContent(@Args('input') content: CreateContentInput) {
     return this.contentService.create(content)
   }
-
+ 
   /* @ResolveField()
   async users(@Parent() parent: Content) {
     return this.contentService.findByContentId(parent.id)
   } */
 
 
- /*  @Mutation(() => Content)
-  createContent(@Args('createContentInput') createContentInput: CreateContentInput) {
-    return this.contentService.create(createContentInput)
-  }
-
-  @Query(() => String)
-  async hello() {
-    return 'herlo'
-  }
-
+ /* 
   @Query(() => [Content], { name: 'content' })
   findAll() {
     return this.contentService.findAll()

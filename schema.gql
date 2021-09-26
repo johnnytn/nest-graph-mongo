@@ -15,6 +15,10 @@ input CreateContentInput {
   type: String!
 }
 
+input FindContentInput {
+  _id: ID!
+}
+
 type Mutation {
   createContent(input: CreateContentInput!): Content!
 }
@@ -22,5 +26,6 @@ type Mutation {
 type Query {
   contents: [Content!]!
   contentsMany: [Content!]!
+  findContent(input: FindContentInput!): Content!
   hello: String!
 }
